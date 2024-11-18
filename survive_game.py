@@ -7,10 +7,10 @@ import pyxel
 import random
 
 # ゲーム定数
-SCREEN_WIDTH = 160
-SCREEN_HEIGHT = 120
-PLAYER_SPEED = 2
-ENEMY_SPEED = 1
+SCREEN_WIDTH = 512
+SCREEN_HEIGHT = 512
+PLAYER_SPEED = 3
+ENEMY_SPEED = 0.5
 
 class SurvivalGame:
     def __init__(self):

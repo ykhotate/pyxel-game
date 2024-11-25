@@ -5,10 +5,11 @@ class MixedNumberGame:
     def __init__(self):
         pyxel.init(160, 160, title="Mixed Number Game")
         self.grid_size = 4  # マスの数（4x4）
-        self.cell_size = 40  # 各マスのサイズ
+        self.cell_size = 16  # 各マスのサイズ
         self.reset_game()
         self.load_images()
         self.init_sounds()
+        pyxel.mouse(True)
         pyxel.run(self.update, self.draw)
 
     def reset_game(self):
@@ -34,7 +35,7 @@ class MixedNumberGame:
 
     def update(self):
         """ゲームの状態を更新"""
-        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             mouse_x = pyxel.mouse_x
             mouse_y = pyxel.mouse_y
 

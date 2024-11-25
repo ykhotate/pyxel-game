@@ -12,6 +12,7 @@ class TowerDefenseGame:
     def __init__(self):
         pyxel.init(SCREEN_WIDTH, SCREEN_HEIGHT, title="Tower Defense Game")
         self.reset_game()
+        pyxel.mouse(True)
         pyxel.run(self.update, self.draw)
 
     def reset_game(self):
@@ -33,7 +34,7 @@ class TowerDefenseGame:
             self.spawn_enemy()
 
         # プレイヤーがタワーを設置
-        if pyxel.btnp(pyxel.MOUSE_LEFT_BUTTON) and self.coins >= TOWER_COST:
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT) and self.coins >= TOWER_COST:
             self.towers.append({"x": pyxel.mouse_x, "y": pyxel.mouse_y})
             self.coins -= TOWER_COST
 

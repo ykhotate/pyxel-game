@@ -69,8 +69,8 @@ class MixedNumberGame:
         # グリッドを描画
         for row in range(self.grid_size):
             for col in range(self.grid_size):
-                x = col * self.cell_size
-                y = row * self.cell_size
+                x = (col + 1) * self.cell_size
+                y = (row + 1) * self.cell_size
                 index = row * self.grid_size + col
                 number = self.numbers[index]
                 display_type = self.display_types[index]

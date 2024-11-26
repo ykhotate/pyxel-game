@@ -3,12 +3,12 @@ import random
 
 class MixedNumberGame:
     def __init__(self):
-        pyxel.init(160, 160, title="Mixed Number Game")
+        pyxel.init(100, 100, title="Mixed Number Game")
         self.grid_size = 4  # マスの数（4x4）
-        self.cell_size = 16  # 各マスのサイズ
+        self.cell_size = 9  # 各マスのサイズ
         self.reset_game()
         self.load_images()
-        self.init_sounds()
+        # self.init_sounds()
         pyxel.mouse(True)
         pyxel.run(self.update, self.draw)
 
@@ -25,13 +25,12 @@ class MixedNumberGame:
     def load_images(self):
         """画像を読み込む（Pyxelエディタで事前に設定）"""
         # 画像バンク0に画像を登録している前提
-        pyxel.image(0).load(0, 0, "assets/images_numbers.png")  # 数字のスプライト
-        pyxel.image(0).load(0, 40, "assets/images_kanji.png")   # 漢数字のスプライト
+        pyxel.load("assets/number.pyxres")  # 数字のスプライト
 
-    def init_sounds(self):
-        """効果音を初期化"""
-        pyxel.sound(0).set("c3e3g3", "t", "7", "n", 10)  # 正解音
-        pyxel.sound(1).set("g2c2", "t", "7", "n", 20)  # 間違い音
+    # def init_sounds(self):
+    #     """効果音を初期化"""
+    #     pyxel.sound(0).set("c3e3g3", "t", "7", "n", 10)  # 正解音
+    #     pyxel.sound(1).set("g2c2", "t", "7", "n", 20)  # 間違い音
 
     def update(self):
         """ゲームの状態を更新"""
@@ -48,14 +47,14 @@ class MixedNumberGame:
 
                 # 数字が正しい場合
                 if clicked_number == self.current_number:
-                    pyxel.play(0, 0)  # 正解音を再生
+                    # pyxel.play(0, 0)  # 正解音を再生
                     self.current_number += 1
                     if self.current_number > 16:
                         self.error_message = "You Win! Press R to Restart"
                 
                 # 間違えた場合
                 elif clicked_number != self.current_number:
-                    pyxel.play(1, 1)  # 間違い音を再生
+                    # pyxel.play(1, 1)  # 間違い音を再生
                     self.error_message = "Wrong! Try Again."
 
         # リセットキー（Rキー）を押した場合
@@ -76,18 +75,18 @@ class MixedNumberGame:
                 display_type = self.display_types[index]
 
                 # マスの枠線
-                pyxel.rectb(x, y, self.cell_size, self.cell_size, pyxel.COLOR_WHITE)
+                pyxel.rectb(x, y, self.cell_size, self.cell_size, pyxel.COLOR_ORANGE)
 
                 # 数字または漢数字を描画
                 if display_type == 0:
                     # 数字のスプライトを表示
-                    tile_x = ((number - 1) % 4) * 40
-                    tile_y = 0  # 数字は上段
+                    tile_x = ((number - 1) % 4) * 8
+                    tile_y = ((number - 1) // 4) * 8
                 else:
                     # 漢数字のスプライトを表示
-                    tile_x = ((number - 1) % 4) * 40
-                    tile_y = 40  # 漢数字は下段
-                pyxel.blt(x + 4, y + 4, 0, tile_x, tile_y, 32, 32, pyxel.COLOR_BLACK)
+                    tile_x = ((number - 1) % 4) * 8
+                    tile_y = ((number - 1) // 4) * 8 + 32 
+                pyxel.blt(x + 1, y + 1, 0, tile_x, tile_y, 8, 8, pyxel.COLOR_CYAN)
 
         # 現在の状態を表示
         pyxel.text(5, 5, f"Next: {self.current_number}", pyxel.COLOR_YELLOW)

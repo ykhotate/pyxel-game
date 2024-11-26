@@ -1,5 +1,5 @@
 import pyxel
-import random
+# import random
 
 START_POS_X = 60
 START_POS_Y = 30
@@ -18,12 +18,14 @@ class MixedNumberGame:
     def reset_game(self):
         """ゲームの状態をリセット"""
         self.numbers = list(range(1, 17))  # 1~16のリスト
-        random.shuffle(self.numbers)  # 数字をランダムに並べる
+        # random.shuffle(self.numbers)  # 数字をランダムに並べる
         self.current_number = 1  # プレイヤーが押すべき現在の数字
         self.error_message = ""  # エラーメッセージ
 
         # 各マスに表示するタイプ（0: 数字, 1: 漢数字）をランダムに決定
-        self.display_types = [random.choice([0, 1]) for _ in range(16)]
+        # self.display_types = [random.choice([0, 1]) for _ in range(16)]
+        self.display_types = [0 for _ in range(16)]
+
 
     def load_images(self):
         """画像を読み込む（Pyxelエディタで事前に設定）"""

@@ -28,7 +28,7 @@ class MixedNumberGame:
     def load_images(self):
         """画像を読み込む（Pyxelエディタで事前に設定）"""
         # 画像バンク0に画像を登録している前提
-        pyxel.load("assets/number.pyxres")  # 数字のスプライト
+        pyxel.load("number.pyxres")  # 数字のスプライト
 
     def init_sounds(self):
         """効果音を初期化"""

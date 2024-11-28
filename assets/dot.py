@@ -24,6 +24,6 @@ def save_to_file(matrix, file_path="output.txt"):
     with open(file_path, "w", encoding="utf-8") as f:
         f.write(matrix)
 # サンプル実行
-matrix = render_text_to_matrix("一", font_size=30)
+matrix = render_text_to_matrix("九十閂仁仁泗伍鮫", font_size=32)
 save_to_file(matrix, "output.txt")
 print("結果を 'output.txt' に書き出しました。")
